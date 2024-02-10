@@ -60,25 +60,6 @@ namespace ModernAppliances
 
             Console.WriteLine("\n");
 
-            // Create 'foundAppliance' variable to hold appliance with item number
-            // Assign null to foundAppliance (foundAppliance may need to be set as nullable)
-
-            // Loop through Appliances
-            // Test appliance item number equals entered item number
-            // Assign appliance in list to foundAppliance variable
-
-            // Break out of loop (since we found what need to)
-
-            // Test appliance was not found (foundAppliance is null)
-            // Write "No appliances found with that item number."
-
-            // Otherwise (appliance was found)
-            // Test found appliance is available
-            // Checkout found appliance
-
-            // Write "Appliance has been checked out."
-            // Otherwise (appliance isn't available)
-            // Write "The appliance is not available to be checked out."
         }
 
         /// <summary>
