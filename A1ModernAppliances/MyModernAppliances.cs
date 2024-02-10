@@ -35,7 +35,15 @@ namespace ModernAppliances
 
                 if (foundAppliance != null)
                 {
-                    Console.WriteLine(foundAppliance);
+                    Console.WriteLine($"Checkout for appliance: {foundAppliance.ItemNumber} - {foundAppliance.Brand}");
+
+                    if (foundAppliance.IsAvailable)
+                    {
+                        foundAppliance.Checkout();
+                        Console.WriteLine("The Appliance has been checked out!");
+                        Console.WriteLine($"Appliance Quantity: {foundAppliance.Quantity}");
+                    }
+
                 }
 
                 else
@@ -50,6 +58,7 @@ namespace ModernAppliances
                 Console.WriteLine("Invalid input. Please enter a valid long value.");
             }
 
+            Console.WriteLine("\n");
 
             // Create 'foundAppliance' variable to hold appliance with item number
             // Assign null to foundAppliance (foundAppliance may need to be set as nullable)
