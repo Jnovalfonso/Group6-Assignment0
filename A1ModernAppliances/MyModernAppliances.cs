@@ -1,19 +1,13 @@
 ﻿using ModernAppliances.Entities;
 using ModernAppliances.Entities.Abstract;
 using ModernAppliances.Helpers;
+using System.Globalization;
 
 namespace ModernAppliances
 {
-    /// <summary>
-    /// Manager class for Modern Appliances
-    /// </summary>
-    /// <remarks>Author: </remarks>
-    /// <remarks>Date: </remarks>
     internal class MyModernAppliances : ModernAppliances
     {
-        /// <summary>
-        /// Option 1: Performs a checkout
-        /// </summary>
+        // Option 1: Performs a checkout
         public override void Checkout()
         {
             Console.WriteLine("Enter the item number of an appliance");
@@ -62,30 +56,44 @@ namespace ModernAppliances
 
         }
 
-        /// <summary>
-        /// Option 2: Finds appliances
-        /// </summary>
+        // Option 2: Finds appliances
         public override void Find()
         {
-            // Write "Enter brand to search for:"
+            Console.WriteLine("Enter the name of the brand that you want to search for: ");
 
-            // Create string variable to hold entered brand
-            // Get user input as string and assign to variable.
+            // Converts user input to Title Case:
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
-            // Create list to hold found Appliance objects
+            string brandName = textInfo.ToTitleCase(Console.ReadLine());
+            Console.WriteLine("\n");
 
-            // Iterate through loaded appliances
-                // Test current appliance brand matches what user entered
-                    // Add current appliance in list to found list
+            List<Appliance> brandAppliances = new List<Appliance>();
 
+            foreach (Appliance appliance in Appliances)
+            {
+                if (appliance.Brand == brandName)
+                {
+                    brandAppliances.Add(appliance);
+                }
+            }
 
-            // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
+            if (brandAppliances.Count > 0)
+            {
+                // Counts loop iterations
+                int totalAppliances = 1;
+                foreach (Appliance brandAppliance in  brandAppliances)
+                {
+                    Console.WriteLine($"{totalAppliances}. {brandAppliance.ItemNumber}");
+                    Console.WriteLine($"{brandAppliance}\n");
+                    totalAppliances++;
+                }
+            }
+
+            else { Console.WriteLine($"There are no appliances with the brand name: {brandName}"); }
+
+            Console.WriteLine("\n");
         }
 
-        /// <summary>
-        /// Displays Refridgerators
-        /// </summary>
         public override void DisplayRefrigerators()
         {
             // Write "Possible options:"
